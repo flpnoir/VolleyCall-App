@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Player Dashboard</h1>
+<h2>Upcoming matches</h2>
+<div class="cards">
+  {% for m in matches %}
+  <div class="card">
+    <h3>{{ m.title }}</h3>
+    <p><strong>{{ m.datetime }}</strong> • {{ m.location }}</p>
+    <p>{{ m.notes }}</p>
+    <a class="btn" href="{{ url_for('match_detail', match_id=m.id) }}">Open</a>
+  </div>
+  {% else %}
+  <p>No matches available.</p>
+  {% endfor %}
+</div>
+{% endblock %}

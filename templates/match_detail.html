@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="centered">
+    <h1>{{ m.title }}</h1>
+    <p><strong>When:</strong> {{ m.datetime|nzdt }} | <strong>Where:</strong> {{ m.location }}</p>
+    <p class="info-note">{{ m.notes }}</p>
+  </div>
+
+  <div class="attending-wrap">
+  <div class="attending-title">Attending {{ m.attending|length }}/{{ m.capacity }}</div>
+
+  <ul class="attending-list">
+    {% for email in m.attending %}
+      <li class="attendee-row">
+        <span class="attendee-name">{{ users[email].name }}</span>
+        <span class="sep">|</span>
+        {% if email in m.paid %}
+          <span class="status-badge paid">Paid</span>
+        {% else %}
+          <span class="status-badge unpaid">Unpaid</span>
+        {% endif %}
+      </li>
+    {% else %}
+      <li class="attendee-row empty">No RSVPs yet.</li>
+    {% endfor %}
+  </ul>
+
+  {% if session.get('email') %}
+    <div class="attending-ctas">
+      <form method="post" action="{{ url_for('rsvp', match_id=m.id) }}">
+        <button class="btn" type="submit">
+          {% if session.get('email') in m.attending %}Cancel RSVP{% else %}RSVP{% endif %}
+        </button>
+      </form>
+      <form method="post" action="{{ url_for('mark_paid', match_id=m.id) }}">
+        <button class="btn" type="submit">
+          {% if session.get('email') in m.paid %}Clear Paid{% else %}Mark as Paid{% endif %}
+        </button>
+      </form>
+    </div>
+  {% else %}
+    <div class="attending-hint"><a href="{{ url_for('login') }}">Login</a> to RSVP.</div>
+  {% endif %}
+</div>
+{% endblock %}

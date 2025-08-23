@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>VolleyCall</title>
-</head>
-<body>
-    <h1>Welcome to VolleyCall!</h1>
-    <p>This is your first Flask app running.</p>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+  <div class="hero">
+    {% if session.get('email') %}
+      <a class="btn-primary" href="{{ url_for('dashboard') }}">Go to Dashboard</a>
+    {% else %}
+      <a class="btn-primary" href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+	
+  </div>
+ 
+
+  <h2 class="section-title">Upcoming</h2>
+  <div class="cards">
+  {% for m in matches.values()|list|sort(attribute="id") %}
+    <div class="card">
+      <h3>{{ m.title }}</h3>
+      <p><strong>When:</strong> {{ m.datetime|nzdt }}</p>
+      <p><strong>Where:</strong> {{ m.location }}</p>
+      <p class="info-note">{{ m.notes }}</p>
+      <a class="btn" href="{{ url_for('match_detail', match_id=m.id) }}">View</a>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VolleyCall Demo</title>
+  <!-- usa tu hoja de estilos -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+</head>
+<body>
+  <!-- navbar con tus clases -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img class="logo-img" src="{{ url_for('static', filename='images/vcall_logo32.png') }}" alt="logo">
+      <span class="brand-name">VolleyCall</span>
+    </div>
+    <div class="nav-right">
+      {% if session.get('email') %}
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <!-- contenedor principal con tu fondo global -->
+  <main class="main-content">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for m in messages %}<div class="flash-item">{{ m }}</div>{% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div>Demo prototype • In-memory only</div>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+</body>
+</html>

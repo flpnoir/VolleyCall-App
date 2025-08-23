@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="centered-form">
+    <h1>New Match</h1>
+    <form method="post" class="form grid">
+      <label>Title</label>
+      <input name="title" placeholder="Saturday Social" required>
+      <label>Date</label>
+      <input name="date" type="date" required>
+      <label>Time</label>
+      <input name="time" type="time" required>
+      <label>Location</label>
+      <input name="location" placeholder="Graham Condon" required>
+      <label>Capacity</label>
+      <input name="capacity" type="number" min="2" max="20" value="12">
+      <label>Notes</label>
+      <textarea name="notes" rows="3" placeholder="Mixed, casual. Bring water."></textarea>
+      <button class="btn-primary" type="submit">Create</button>
+    </form>
+  </div>
+{% endblock %}

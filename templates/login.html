@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="centered-form">
+    <h1>Login</h1>
+    <form method="post" class="form">
+      <label>Email</label>
+      <input name="email" type="email" required placeholder="you@example.com">
+      <label>Password</label>
+      <input name="password" type="password" required placeholder="test">
+      <button class="btn-primary" type="submit">Sign in</button>
+    </form>
+	<p>Want to play? <a href="{{ url_for('register') }}">Register</a></p>
+  </div>
+{% endblock %}
