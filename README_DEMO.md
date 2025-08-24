@@ -1,23 +1,22 @@
-README_DEMO.md
-==============
-This demo runs inside your existing repo "VolleyCall-App" without a database.
-It uses in-memory data for the assessment video and presentation.
+This prototype keeps data in memory for the assessment2 video and presentation.
 
-Folder layout to add inside your repo:
+Folder layout
+-------------
 VolleyCall-App/
   app_demo.py
   requirements_demo.txt
-  demo_prototype/
-    templates/
-    static/
+  templates/
+  static/
+    css/stylesheet.css
+    images/...
 
 How to install and run (Windows)
 --------------------------------
-1) Open VS Code in the repo folder "VolleyCall-App".
+1) Open VS Code in the repo folder “VolleyCall-App”.
 2) Open Terminal.
 3) Create and activate a fresh venv:
-   py -m venv .venv
-   .venv\Scripts\activate
+   python -m venv .venv
+   .\.venv\Scripts\Activate
 4) Install minimal deps:
    pip install -r requirements_demo.txt
 5) Run the demo server:
@@ -26,7 +25,7 @@ How to install and run (Windows)
 
 How to install and run (macOS or Linux)
 ---------------------------------------
-1) Open VS Code in the repo folder "VolleyCall-App".
+1) Open VS Code in the repo folder “VolleyCall-App”.
 2) Open Terminal.
 3) Create and activate a fresh venv:
    python3 -m venv .venv
@@ -39,14 +38,30 @@ How to install and run (macOS or Linux)
 
 Test users
 ----------
-- Organizer: ernesto@example.com / test
-- Player: eleonora@example.com / test
-- Player: john@example.com / test
+- organiser: ernesto@example.com / test
+- player:    eleonora@example.com / test
+- player:    john@example.com / test
 
-Main pages
-----------
-- /
-- /login
-- /dashboard
-- /matches/new
-- /matches/<id>
+Features in the demo
+--------------------
+- Login and registration with roles (organiser, player)
+- Organiser creates a match: title, date, time, location, capacity, notes
+- Match detail: RSVP, Paid / Unpaid badges, attendee chips
+- Dashboards: 2×2 cards on desktop, responsive on mobile
+- NZ short date format: dd/mm/yyyy h:mm am/pm
+- UI: Few new incorporations such as glass slab over the background for contrast, clear button hierarchy
+
+Routes
+------
+- /               index with upcoming matches
+- /login          sign in
+- /register       sign up (organiser gate, see below)
+- /dashboard      player or organiser dashboard
+- /matches/new    create a match
+- /matches/<id>   match detail with RSVP
+
+Notes and limits
+----------------
+- In memory only. Data resets on server restart.
+- For the assessment prototype. No email is sent yet.
+- Images and CSS live under static/. Templates under templates/.

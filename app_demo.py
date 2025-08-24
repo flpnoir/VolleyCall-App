@@ -67,8 +67,9 @@ def login():
             return redirect(url_for("dashboard"))
         flash("Invalid credentials")
     return render_template("login.html")
-    
-    @app.route("/register", methods=["GET","POST"])
+
+
+@app.route("/register", methods=["GET","POST"])
 def register():
     # very simple, in-memory
     if request.method == "POST":
@@ -99,11 +100,21 @@ def dashboard():
     user = current_user()
     if not user:
         return redirect(url_for("login"))
+
     if user["role"] == "organiser":
         own = [m for m in matches.values() if m["organiser"] == session["email"]]
-        return render_template("dashboard_organiser.html", user=user, matches=own)
+        all_matches = sorted(matches.values(), key=lambda m: m["id"])
+        return render_template(
+            "dashboard_organiser.html",
+            user=user,
+            own=own,
+            all_matches=all_matches
+        )
+
+    # players see all upcoming
     upcoming = sorted(matches.values(), key=lambda m: m["id"])
     return render_template("dashboard_player.html", user=user, matches=upcoming)
+
 
 @app.route("/matches/new", methods=["GET","POST"])
 def create_match():

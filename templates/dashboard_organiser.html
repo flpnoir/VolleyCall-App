@@ -4,17 +4,35 @@
     <h1>Organiser Dashboard</h1>
     <a class="btn-primary" href="{{ url_for('create_match') }}">Create match</a>
   </div>
+
   <h2 class="section-title">Your matches</h2>
   <div class="cards">
-    {% for m in matches %}
-    <div class="card">
-  <h3>{{ m.title }}</h3>
-  <p><strong>{{ m.datetime|nzdt }}</strong> • {{ m.location }}</p>
-  <p class="info-note">{{ m.notes }}</p>
-  <a class="btn" href="{{ url_for('match_detail', match_id=m.id) }}">Open</a>
-</div>
+    {% for m in own %}
+      <div class="card">
+        <h3>{{ m.title }}</h3>
+        <p><strong>{{ m.datetime|nzdt }}</strong> • {{ m.location }}</p>
+        <p class="info-note">{{ m.notes }}</p>
+        <a class="btn" href="{{ url_for('match_detail', match_id=m.id) }}">Open</a>
+      </div>
     {% else %}
-    <p>No matches yet.</p>
+      <p>No matches yet.</p>
+    {% endfor %}
+  </div>
+
+  <h2 class="section-title">All matches</h2>
+  <div class="cards">
+    {% for m in all_matches %}
+      <div class="card">
+        <h3>
+          {{ m.title }}
+          {% if m.organiser == session['email'] %}
+            <span class="pill ok">Yours</span>
+          {% endif %}
+        </h3>
+        <p><strong>{{ m.datetime|nzdt }}</strong> • {{ m.location }}</p>
+        <p class="info-note">{{ m.notes }}</p>
+        <a class="btn" href="{{ url_for('match_detail', match_id=m.id) }}">Open</a>
+      </div>
     {% endfor %}
   </div>
 {% endblock %}

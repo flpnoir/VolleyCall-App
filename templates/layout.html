@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VolleyCall Demo</title>
+  <title>VolleyCall</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
 </head>
 <body>
@@ -15,32 +15,39 @@
     <div class="nav-right">
       {% if session.get('email') %}
         <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <span> · </span>
         <a href="{{ url_for('logout') }}">Logout</a>
-     {% if not session.get('email') %}
-		<a href="{{ url_for('login') }}">Login</a>
-		<span> · </span>
-		<a href="{{ url_for('register') }}">Register</a>
-{% endif %}
+      {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <span> · </span>
+        <a href="{{ url_for('register') }}">Register</a>
+      {% endif %}
     </div>
   </nav>
-<header class="brand-hero">
-  <img class="brand-logo" src="{{ url_for('static', filename='images/vcall_logobig.png') }}" alt="VolleyCall logo">
-</header>
-  <main class="main-content">
-     {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <div class="flash">{% for m in messages %}<div class="flash-item">{{ m }}</div>{% endfor %}</div>
-    {% endif %}
-  {% endwith %}
 
-  <div class="page-slab">
-    {% block content %}{% endblock %}
-  </div>
+  <!-- logo grande centrado en todas las páginas -->
+  <header class="brand-hero">
+    <img class="brand-logo" src="{{ url_for('static', filename='images/vcall_logobig.png') }}" alt="VolleyCall logo">
+  </header>
+
+  <main class="main-content">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for m in messages %}<div class="flash-item">{{ m }}</div>{% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- slab global -->
+    <div class="page-slab">
+      {% block content %}{% endblock %}
+    </div>
   </main>
 
   <footer class="footer">
     <div class="footer-inner">
-      <small>Demo prototype • In-memory only</small>
+      <small>VolleyCall</small>
     </div>
   </footer>
 </body>
