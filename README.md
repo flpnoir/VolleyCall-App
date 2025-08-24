@@ -8,7 +8,7 @@ VolleyCall-App/
   templates/
   static/
     css/stylesheet.css
-    images/...
+    images/
 
 How to install and run (Windows)
 --------------------------------
@@ -49,19 +49,22 @@ Features in the demo
 - Match detail: RSVP, Paid / Unpaid badges, attendee chips
 - Dashboards: 2×2 cards on desktop, responsive on mobile
 - NZ short date format: dd/mm/yyyy h:mm am/pm
-- UI: Few new incorporations such as glass slab over the background for contrast, clear button hierarchy
+- UI: single stylesheet, glass slab over the background for contrast, centred branding, clear button hierarchy
+- Login and registration with roles (organiser, player)
 
 Routes
 ------
 - /               index with upcoming matches
 - /login          sign in
-- /register       sign up (organiser gate, see below)
+- /register       sign up
 - /dashboard      player or organiser dashboard
 - /matches/new    create a match
 - /matches/<id>   match detail with RSVP
+- / index with upcoming matches
 
 Notes and limits
 ----------------
 - In memory only. Data resets on server restart.
 - For the assessment prototype. No email is sent yet.
+- No organiser password gate in this demo. It can be added later if needed.
 - Images and CSS live under static/. Templates under templates/.
