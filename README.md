@@ -54,13 +54,12 @@ Features in the demo
 
 Routes
 ------
-- /               index with upcoming matches
+- /index          with upcoming matches
 - /login          sign in
 - /register       sign up
 - /dashboard      player or organiser dashboard
 - /matches/new    create a match
 - /matches/<id>   match detail with RSVP
-- / index with upcoming matches
 
 Notes and limits
 ----------------
