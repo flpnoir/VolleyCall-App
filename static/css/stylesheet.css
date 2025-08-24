@@ -1,14 +1,14 @@
-/* ===== Vars ===== */
+/*  Var  */
 :root{
   --blue:#2D85FF;
   --white:#FFFFFF;
-  --text:#FFFFFF;      /* base text over image */
+  --text:#FFFFFF;      /* text over image */
   --grey:#D1D5DB;
   --glass-blue: rgba(45,133,255,.24);   /* stronger glass */
   --glass-border: rgba(255,255,255,.40);
 }
 
-/* ===== Base ===== */
+/*  Base  */
 *{ box-sizing:border-box }
 body{
   margin:0;
@@ -18,7 +18,7 @@ body{
   background-size:cover;
 }
 
-/* ===== Navbar ===== */
+/*  Navbar  */
 .navbar{
   display:flex; justify-content:space-between; align-items:center;
   padding:13px 50px;
@@ -32,7 +32,7 @@ body{
 .brand-name{ font-weight:600 }
 .navbar a, .navbar .brand-name{ color:#111; }
 
-/* ===== Brand header (logo centrado) ===== */
+/*  Brand header (logo cent)  */
 .brand-hero{
   position:relative;
   margin-top:72px; margin-bottom:16px;
@@ -45,18 +45,18 @@ body{
   pointer-events:auto;
 }
 
-/* CTA bajo el logo (index) */
+/* gap logo (index) */
 .hero{ display:flex; justify-content:center; margin:8px 0 16px; }
 
-/* ===== Main container ===== */
+/*  Main container  */
 .main-content{
   max-width:960px;
   margin:0 auto;
-  padding:140px 16px 120px;   /* espacio para navbar + footer fijo */
+  padding:140px 16px 120px;   /* gap navbar + footer fixed */
   text-align:center;
 }
 
-/* ===== Glass slab global ===== */
+/*  Glass slab global  */
 .page-slab{
   background:linear-gradient(180deg,var(--glass-blue),rgba(45,133,255,.12));
   border:1px solid var(--glass-border);
@@ -67,9 +67,9 @@ body{
   display:block;
   margin:0 auto 16px;
 }
-.page-slab.narrow{ max-width:760px; }  /* usar si querés más angosto */
+.page-slab.narrow{ max-width:760px; }  /* narrow slab */
 
-/* lectura dentro del slab */
+/* inside slab */
 .page-slab h1, .page-slab h2, .page-slab h3{
   color:#fff; text-shadow:0 2px 4px rgba(0,0,0,.6);
 }
@@ -81,11 +81,11 @@ body{
 }
 .page-slab .centered p:first-of-type strong{ color:#fff; opacity:1; }
 
-/* mantener cajas claras legibles dentro del slab */
+/* boxes inside slab */
 .page-slab .card, .page-slab .list{ background:rgba(255,255,255,0.94); color:#111; }
 .page-slab .card *, .page-slab .list *{ color:#111; }
 
-/* ===== Tarjetas Dashboard (2 por fila) ===== */
+/*  cards dash (2 raw)  */
 .cards{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
@@ -103,7 +103,7 @@ body{
   box-shadow:0 6px 18px rgba(0,0,0,.08);
 }
 
-/* ===== Nota destacada (match notes) ===== */
+/*  notes (match notes)  */
 .info-note{
   background:rgba(255,255,255,0.92);
   color:#111;
@@ -115,7 +115,7 @@ body{
   margin:10px 0;
 }
 
-/* ===== Chips de asistentes ===== */
+/*  Chips assist  */
 .attending-wrap{ display:flex; flex-direction:column; align-items:center; gap:10px; margin:12px 0 6px; }
 .attending-title{ font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,.6); }
 .attending-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; align-items:center; }
@@ -139,7 +139,7 @@ body{
 .attending-ctas{ display:flex; gap:12px; justify-content:center; }
 .attending-hint{ color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.6); }
 
-/* ===== Botones y forms ===== */
+/*  Buttons and forms  */
 .btn, .btn-primary{
   display:inline-block; padding:12px 20px; border-radius:6px; text-decoration:none;
   border:1px solid #ccc; background:#fafafa; color:#111;
@@ -160,22 +160,22 @@ select{
   background:#fff;
 }
 
-/* ===== Legibilidad en cajas claras ===== */
+/*  bright boxes legibility  */
 .card, .card *, .list, .list *, .btn, input, textarea, .flash-item, .pill, .pill.ok{ color:#111; }
 
-/* ===== Flash ===== */
+/*  Flash  */
 .flash{ margin:8px 0 }
 .flash-item{
   background:#eef6ff; border:1px solid #cfe4ff;
   padding:8px 12px; border-radius:8px; margin-bottom:6px;
 }
 
-/* ===== Headings sobre imagen ===== */
+/*  Headings on img  */
 .section-title{ margin:24px 0 10px; color:var(--white); text-shadow:0 1px 3px rgba(0,0,0,.6) }
 .centered h1{ color:#fff; text-shadow:0 2px 4px rgba(0,0,0,.6) }
 .logo-big{ display:none !important; }  /* por si quedó el viejo hero */
 
-/* ===== Footer ===== */
+/*  Footer  */
 .footer{
   position:fixed; bottom:0; left:0; right:0;
   background-color:rgba(255,255,255,0.6);
@@ -185,7 +185,7 @@ select{
 }
 .footer-inner{ max-width:960px; margin:0 auto; text-align:center }
 
-/* ===== Responsive ===== */
+/*  Responsive  */
 @media (max-width:900px){
   .cards{ grid-template-columns:1fr; justify-items:stretch; }
   .card{ width:auto; }

@@ -10,3 +10,12 @@ Thumbs.db
 a_demo_screenshots/
 
 *.pptx
+
+*.zip
+
+demo_prototype/
+
+.venv/
+venv/
+__pycache__/
+*.pyc
